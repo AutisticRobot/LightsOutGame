@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7n5q1fp2bnvv"]
+
+[ext_resource type="Script" path="res://Scripts/TextOnly/light_box_scene.cs" id="1_hiry7"]
+[ext_resource type="Theme" uid="uid://b54xpct54kdau" path="res://Assets/Placeholder/BasicTheme.tres" id="1_y4gux"]
+
+[node name="Light Box Scene" type="Node2D" node_paths=PackedStringArray("XInput", "YInput", "LightGrid", "SwitchGrid")]
+script = ExtResource("1_hiry7")
+XInput = NodePath("XInput")
+YInput = NodePath("YInput")
+LightGrid = NodePath("TO_Lights")
+SwitchGrid = NodePath("TO_Switches")
+
+[node name="TO_Lights" type="Label" parent="."]
+offset_left = 388.0
+offset_top = 59.0
+offset_right = 674.0
+offset_bottom = 346.0
+text = "X|0|1|2|3|4|5
+0|X|X|X|X|X
+1|X|X|X|X|X
+2|X|X|O|X|X
+3|X|X|X|X|X
+4|X|X|X|X|X"
+
+[node name="TO_Switches" type="Label" parent="."]
+offset_left = 650.0
+offset_top = 60.0
+offset_right = 936.0
+offset_bottom = 347.0
+text = "X|0|1|2|3|4|5
+0|X|X|X|X|X
+1|X|X|X|X|X
+2|X|X|O|X|X
+3|X|X|X|X|X
+4|X|X|X|X|X"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 410.0
+offset_top = 277.0
+offset_right = 749.0
+offset_bottom = 392.0
+scale = Vector2(0.68, 0.76)
+theme = ExtResource("1_y4gux")
+text = "Press Cord"
+
+[node name="XInput" type="LineEdit" parent="."]
+offset_left = 257.0
+offset_top = 402.0
+offset_right = 501.0
+offset_bottom = 498.0
+theme = ExtResource("1_y4gux")
+placeholder_text = "X Cord"
+
+[node name="YInput" type="LineEdit" parent="."]
+offset_left = 546.0
+offset_top = 401.0
+offset_right = 790.0
+offset_bottom = 497.0
+theme = ExtResource("1_y4gux")
+placeholder_text = "Y Cord"
+
+[connection signal="button_down" from="Button" to="." method="onGetCord"]
