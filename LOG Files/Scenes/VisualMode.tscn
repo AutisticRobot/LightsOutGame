@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://b2gg6n4j7x7c5"]
+[gd_scene load_steps=2 format=3 uid="uid://b2gg6n4j7x7c5"]
+
+[ext_resource type="Script" path="res://Scripts/VisualMode/VisualMode.cs" id="1_41ims"]
 
 [node name="VisualMode" type="Node2D"]
+script = ExtResource("1_41ims")
 
 [node name="LightPanel" type="Control" parent="."]
 layout_mode = 3

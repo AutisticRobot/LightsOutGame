@@ -16,7 +16,7 @@ offset_bottom = 78.0
 scale = Vector2(4.76, 6.76)
 text = "Lights Out Game"
 
-[node name="Button" type="Button" parent="."]
+[node name="To text mode" type="Button" parent="."]
 offset_left = 402.0
 offset_top = 258.0
 offset_right = 532.0
@@ -26,7 +26,7 @@ text = "Text Only Mode"
 script = ExtResource("2_smbxt")
 changeToScene = ExtResource("3_dvba0")
 
-[node name="Button2" type="Button" parent="."]
+[node name="To visuial mode" type="Button" parent="."]
 offset_left = 396.0
 offset_top = 424.0
 offset_right = 526.0
@@ -36,5 +36,5 @@ text = "Visual Mode"
 script = ExtResource("2_smbxt")
 changeToScene = ExtResource("4_11802")
 
-[connection signal="button_down" from="Button" to="Button" method="onButtonPress"]
-[connection signal="button_down" from="Button2" to="Button2" method="onButtonPress"]
+[connection signal="button_down" from="To text mode" to="To text mode" method="onButtonPress"]
+[connection signal="button_down" from="To visuial mode" to="To visuial mode" method="onButtonPress"]
