@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class Grid : GodotObject
+public partial class Grid : Resource
 {
     private bool[,] grid;
     private int XSize;
@@ -24,6 +24,15 @@ public partial class Grid : GodotObject
     //==============\
     //   Getters    |
     //=============/
+    public bool hasGrid()
+    {
+        return grid != null;
+    }
+    static public bool isReady(Grid grid)
+    {
+        return (grid != null && grid.hasGrid());
+    }
+
     public int getXSize(){return XSize;}
     public int getYSize(){return YSize;}
 
@@ -52,7 +61,7 @@ public partial class Grid : GodotObject
     }
 
     //==============\
-    //   Presser    |
+    //   Pressers   |
     //=============/
     public void pressSimple(int X, int Y)
     {
@@ -61,13 +70,28 @@ public partial class Grid : GodotObject
             grid[X,Y] = !grid[X,Y];
         }
     }
+    public void pressCross(int X, int Y)
+    {
+        //check pattern, X = checked spot, Q = start and check
+        //*X*
+        //XQX
+        //*X*
+
+        pressSimple(X,Y);
+        pressSimple(X-1,Y);
+        pressSimple(X+1,Y);
+        pressSimple(X,Y-1);
+        pressSimple(X,Y+1);
+
+
+    }
 
     //==============\
     //   Checkers   |
     //=============/
     public bool isInGrid(int X, int Y)
     {
-        if(0 > X || X >= XSize || 0 > Y || Y >= XSize || isInOtherParameter(X,Y))// Y >= YSize because Size vars are 1 grater that the last index in grid 
+        if(0 > X || X >= XSize || 0 > Y || Y >= XSize || isInOtherParameter(X,Y))// N >= NSize because Size vars are 1 grater that the last index in grid 
         {
             return false;
         }else{

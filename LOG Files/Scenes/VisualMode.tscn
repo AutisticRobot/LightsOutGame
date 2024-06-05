@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2gg6n4j7x7c5"]
+[gd_scene load_steps=5 format=3 uid="uid://b2gg6n4j7x7c5"]
 
 [ext_resource type="Script" path="res://Scripts/VisualMode/VisualMode.cs" id="1_41ims"]
+[ext_resource type="Script" path="res://Scripts/BasicGridLogic/Grid.cs" id="2_d8kyl"]
 [ext_resource type="Texture2D" uid="uid://bokbh0os0wy35" path="res://icon.svg" id="2_oaws6"]
 
-[node name="VisualMode" type="Node2D"]
+[sub_resource type="Resource" id="Resource_c1d8a"]
+script = ExtResource("2_d8kyl")
+
+[node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard")]
 script = ExtResource("1_41ims")
+XSize = 5
+YSize = 5
+SwitchBoard = NodePath("SwitchGrid")
+solution = SubResource("Resource_c1d8a")
 
 [node name="LightPanel" type="Control" parent="."]
 layout_mode = 3
@@ -18,7 +26,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Switch Panel PlaceHolder" type="Sprite2D" parent="."]
+[node name="SwitchGrid" type="Sprite2D" parent="."]
 position = Vector2(605, 241)
 scale = Vector2(3, 3)
 texture = ExtResource("2_oaws6")
