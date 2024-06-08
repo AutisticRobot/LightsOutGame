@@ -10,8 +10,8 @@ script = ExtResource("2_d8kyl")
 
 [node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard")]
 script = ExtResource("1_41ims")
-XSize = 5
-YSize = 5
+XSize = 27
+YSize = 13
 SwitchBoard = NodePath("SwitchGrid")
 solution = SubResource("Resource_c1d8a")
 SwitchPrefab = ExtResource("3_aj0x7")
@@ -31,4 +31,10 @@ offset_bottom = 40.0
 [node name="SwitchGrid" type="Sprite2D" parent="."]
 position = Vector2(578, 325)
 scale = Vector2(4, 4)
+texture = ExtResource("2_oaws6")
+
+[node name="SwitchGrid2" type="Sprite2D" parent="SwitchGrid"]
+modulate = Color(0, 1, 0, 1)
+show_behind_parent = true
+scale = Vector2(1.15, 1.15)
 texture = ExtResource("2_oaws6")

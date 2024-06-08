@@ -24,7 +24,7 @@ public partial class VisualMode : Node2D
 
 		for(int Y=0;Y<YSize;Y++)
 		{
-			for(int X=0;X<YSize;X++)
+			for(int X=0;X<XSize;X++)
 			{
 				CreateSwitch(X,Y);
 			}
