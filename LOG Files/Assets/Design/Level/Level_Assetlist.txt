@@ -1,0 +1,8 @@
+Background color - Dark brown 
+
+Border - slightly lighter brown (#352015, size 100px), add all around (4x)
+- can be used to display extra info
+
+Add cables and fuses for level
+-Maybe cables connect the fuses? Or need to be in a specific order? (Color blue #59617a and size 5)
+-Fuses should be toggled to indicate on or off
