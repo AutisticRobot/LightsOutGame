@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class VisualMode : Node2D
 {
@@ -12,12 +13,18 @@ public partial class VisualMode : Node2D
 	[Export] public Grid solution;
 	[Export] public PackedScene SwitchPrefab;
 				public Vector2 SwitchScale;
+			[Export] public float SwitchScaleModifier;
+			 public List<Switch> allSwitches = new();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		XBoardLength = (int)SwitchBoard.Scale.X * 128;
 		YBoardLength = (int)SwitchBoard.Scale.Y * 128;
-		SwitchScale = new(SwitchBoard.Scale.X / XSize ,SwitchBoard.Scale.Y / YSize);
+		SwitchScale = new
+		(
+			(SwitchBoard.Scale.X + SwitchScaleModifier) / XSize ,
+			(SwitchBoard.Scale.Y + SwitchScaleModifier) / YSize  
+		);
 
 		solution.startGrid(XSize, YSize);
 		GD.Print("Solution is set = " + Grid.isReady(solution));
@@ -40,27 +47,27 @@ public partial class VisualMode : Node2D
 	
 	public void CreateSwitch(int X, int Y)
 	{
-		GD.Print("X: " + X + " Y: " + Y);
+		//GD.Print("X: " + X + " Y: " + Y);
 
 		Switch swt = SwitchPrefab.Instantiate<Switch>();
-		int outX;
-		int outY;
+		float outX;
+		float outY;
 
 		//Position relitive to top right of Board
-		outX = (XBoardLength/XSize) * X;
-		outY = (YBoardLength/YSize) * Y;
+		outX = ((float)XBoardLength/XSize) * X;
+		outY = ((float)YBoardLength/YSize) * Y;
 
 		//off set to account for being relative to center of switch
-		outX += XBoardLength/(XSize * 2);
-		outY += YBoardLength/(YSize * 2);
+		outX += ((float)XBoardLength)/(XSize * 2);
+		outY += ((float)YBoardLength)/(YSize * 2);
 
 		//off set to account for being relative to center of Board
 		outX -= XBoardLength/2;
 		outY -= YBoardLength/2;
 
 		//offset to make relative to global
-		outX += (int)SwitchBoard.Position.X;
-		outY += (int)SwitchBoard.Position.Y;
+		outX += SwitchBoard.Position.X;
+		outY += SwitchBoard.Position.Y;
 
         swt.Position = new Vector2(outX,outY);
 		swt.Scale = SwitchScale;
@@ -68,8 +75,9 @@ public partial class VisualMode : Node2D
 		swt.Y = Y;
 
 
-		GD.Print(swt.Position);
+		//GD.Print(swt.Position);
 		AddChild(swt);
+		allSwitches.Add(swt);
 
 	}
 }

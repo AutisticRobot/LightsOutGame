@@ -10,8 +10,8 @@ script = ExtResource("2_d8kyl")
 
 [node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard")]
 script = ExtResource("1_41ims")
-XSize = 27
-YSize = 13
+XSize = 5
+YSize = 5
 SwitchBoard = NodePath("SwitchGrid")
 solution = SubResource("Resource_c1d8a")
 SwitchPrefab = ExtResource("3_aj0x7")
