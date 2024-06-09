@@ -1,0 +1,16 @@
+Background color - medium gray (#626a77), slightly blue
+
+Buttons in Minion Variable Concept, but other "old school" font would work too. 
+I would recommend using a font to make it easier to scale but I did export them to put in there.
+- I would recommend adding a box around (simply white, 5px border) when hovering over option, 
+START box is 530x155px // OTHER box is 400x140px
+
+
+Windows (two boxes, the yellow one on top of the other)
+- the "lights" can be turned off and on to show progess or even a simple animation by delaying them by a few seconds. 
+(I would recommend slow blinking to avoid strobe effect)
+-to make them responsive/scalable, the position and size needs to be relative
+- I have exported them as a grid for easy use, but really do recommend using the single windows and placing them by hand
+-grid could be better to reduce amount of objects, but needs more code to "blink"
+
+Almost everything is boxes, so they could be "re-made" in Gordot for easier scaling (pixels can look a bit weird when scaled to far)
