@@ -15,6 +15,7 @@ YSize = 5
 SwitchBoard = NodePath("SwitchGrid")
 solution = SubResource("Resource_c1d8a")
 SwitchPrefab = ExtResource("3_aj0x7")
+SwitchScaleModifier = -0.15
 
 [node name="LightPanel" type="Control" parent="."]
 layout_mode = 3

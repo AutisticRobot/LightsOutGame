@@ -6,9 +6,8 @@ public partial class VisualMode : Node2D
 {
 	[Export] public int XSize;
 	[Export] public int YSize;
-	[Export] public Node2D SwitchBoard;
-			 public int XBoardLength = 128;
-			 public int YBoardLength = 128;
+	[Export] public Sprite2D SwitchBoard;
+			 public Vector2 BoardLength;
 	[Export] public MaskedGrid GridState;
 	[Export] public Grid solution;
 	[Export] public PackedScene SwitchPrefab;
@@ -18,12 +17,11 @@ public partial class VisualMode : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		XBoardLength = (int)SwitchBoard.Scale.X * 128;
-		YBoardLength = (int)SwitchBoard.Scale.Y * 128;
+		BoardLength = SwitchBoard.Scale * SwitchBoard.Texture.GetSize();
 		SwitchScale = new
 		(
-			(SwitchBoard.Scale.X + SwitchScaleModifier) / XSize ,
-			(SwitchBoard.Scale.Y + SwitchScaleModifier) / YSize  
+			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize ,
+			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize  
 		);
 
 		solution.startGrid(XSize, YSize);
@@ -53,24 +51,25 @@ public partial class VisualMode : Node2D
 		float outX;
 		float outY;
 
+
 		//Position relitive to top right of Board
-		outX = ((float)XBoardLength/XSize) * X;
-		outY = ((float)YBoardLength/YSize) * Y;
+		outX = ((float)BoardLength.X/XSize) * X;
+		outY = ((float)BoardLength.Y/YSize) * Y;
 
 		//off set to account for being relative to center of switch
-		outX += ((float)XBoardLength)/(XSize * 2);
-		outY += ((float)YBoardLength)/(YSize * 2);
+		outX += ((float)BoardLength.X)/(XSize * 2);
+		outY += ((float)BoardLength.Y)/(YSize * 2);
 
 		//off set to account for being relative to center of Board
-		outX -= XBoardLength/2;
-		outY -= YBoardLength/2;
+		outX -= BoardLength.X/2;
+		outY -= BoardLength.Y/2;
 
 		//offset to make relative to global
 		outX += SwitchBoard.Position.X;
 		outY += SwitchBoard.Position.Y;
 
         swt.Position = new Vector2(outX,outY);
-		swt.Scale = SwitchScale;
+		swt.Scale = SwitchScale / swt.Texture.GetSize();
 		swt.X = X;
 		swt.Y = Y;
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv16cwplf1tm"]
 
-[ext_resource type="Texture2D" uid="uid://bokbh0os0wy35" path="res://icon.svg" id="1_xteq7"]
+[ext_resource type="Texture2D" uid="uid://kfqa3rsmggt2" path="res://Assets/Design/Menu/Single window.png" id="1_1kast"]
 [ext_resource type="Script" path="res://Scripts/VisualMode/Switch.cs" id="2_c8r0c"]
 
 [node name="Switch" type="Sprite2D"]
-texture = ExtResource("1_xteq7")
+texture = ExtResource("1_1kast")
 script = ExtResource("2_c8r0c")
