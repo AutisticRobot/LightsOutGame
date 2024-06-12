@@ -10,6 +10,7 @@ public partial class Panel : Control
 			 public Vector2 BoardLength;
 			 public Vector2 BoardPos;
 	[Export] public PackedScene SwitchPrefab;
+	[Export] public DataSwitchRes SwitchRes;
 				public Vector2 SwitchScale;
 			[Export] public float SwitchScaleModifier;
 			 public List<Switch> allSwitches = new();
