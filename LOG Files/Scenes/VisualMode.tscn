@@ -8,19 +8,22 @@
 [sub_resource type="Resource" id="Resource_c1d8a"]
 script = ExtResource("2_d8kyl")
 
-[node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard")]
+[node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard", "LightBoard", "FuseBoard")]
 script = ExtResource("1_41ims")
 XSize = 5
 YSize = 5
 SwitchBoard = NodePath("SwitchGrid")
 solution = SubResource("Resource_c1d8a")
+LightBoard = NodePath("LightPanel")
+FuseBoard = NodePath("SwitchPanel")
 
-[node name="LightPanel" type="Control" parent="."]
+[node name="LightPanel" type="Control" parent="." node_paths=PackedStringArray("SceneMan")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_4nc3w")
+SceneMan = NodePath("..")
 
 [node name="SwitchPanel" type="Control" parent="."]
 layout_mode = 3
