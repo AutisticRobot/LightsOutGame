@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class DataSwitchRes : Resource
 {
     [Export] public Texture2D onState;

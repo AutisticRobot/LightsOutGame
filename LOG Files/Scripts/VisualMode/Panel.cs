@@ -12,9 +12,11 @@ public partial class Panel : Control
 	[Export] public PackedScene SwitchPrefab;
 	[Export] public DataSwitchRes SwitchRes;
 				public Vector2 SwitchScale;
-			[Export] public float SwitchScaleModifier;
+					 public float SwitchScaleModifier;
 			 public List<Switch> allSwitches = new();
 			 public Grid State;
+
+			 public bool test;
 	// Called when the node enters the scene tree for the first time.
 	public void Start()
 	{
@@ -22,12 +24,15 @@ public partial class Panel : Control
 		YSize = SceneMan.YSize;
 		BoardLength = SceneMan.BoardLength;
 		BoardPos = SceneMan.SwitchBoard.Position;
+		SwitchScaleModifier = SwitchRes.SwitchScaleModifier;
 
 		SwitchScale = new
 		(
 			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize ,
 			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize  
 		);
+
+
 		for(int Y=0;Y<YSize;Y++)
 		{
 			for(int X=0;X<XSize;X++)
@@ -46,11 +51,14 @@ public partial class Panel : Control
 	
 	public void CreateSwitch(int X, int Y)
 	{
-		//GD.Print("X: " + X + " Y: " + Y);
+		GD.Print("X: " + X + " Y: " + Y);
 
 		Switch swt = SwitchPrefab.Instantiate<Switch>();
 		float outX;
 		float outY;
+
+		swt.onState = SwitchRes.onState;
+		swt.offState = SwitchRes.offState;
 
 
 		//Position relitive to top right of Board
@@ -76,6 +84,8 @@ public partial class Panel : Control
 
 
 		//GD.Print(swt.Position);
+		swt.Toggle(test);
+		test = !test;
 		AddChild(swt);
 		allSwitches.Add(swt);
 

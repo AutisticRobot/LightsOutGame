@@ -1,12 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2gg6n4j7x7c5"]
+[gd_scene load_steps=14 format=3 uid="uid://b2gg6n4j7x7c5"]
 
 [ext_resource type="Script" path="res://Scripts/VisualMode/VisualMode.cs" id="1_41ims"]
 [ext_resource type="Script" path="res://Scripts/BasicGridLogic/Grid.cs" id="2_d8kyl"]
 [ext_resource type="Texture2D" uid="uid://bokbh0os0wy35" path="res://icon.svg" id="2_oaws6"]
 [ext_resource type="Script" path="res://Scripts/VisualMode/Panel.cs" id="3_4nc3w"]
+[ext_resource type="PackedScene" uid="uid://cv16cwplf1tm" path="res://Scenes/Switch.tscn" id="4_s4bf6"]
+[ext_resource type="Texture2D" uid="uid://kfqa3rsmggt2" path="res://Assets/Design/Menu/Single window.png" id="5_7bpsr"]
+[ext_resource type="Script" path="res://Scripts/VisualMode/DataSwitchRes.cs" id="5_8doev"]
+[ext_resource type="Texture2D" uid="uid://cq5cvck4q2t13" path="res://Assets/Design/Menu/Window on.png" id="6_7e0v6"]
+[ext_resource type="Texture2D" uid="uid://boymntw6nkct5" path="res://Assets/Design/Level/Fuse_off.png" id="8_o5dn5"]
+[ext_resource type="Texture2D" uid="uid://ctlk0nxlnovbt" path="res://Assets/Design/Level/Fuse_on.png" id="9_ce6ov"]
 
 [sub_resource type="Resource" id="Resource_c1d8a"]
 script = ExtResource("2_d8kyl")
+
+[sub_resource type="Resource" id="Resource_y2v3v"]
+script = ExtResource("5_8doev")
+onState = ExtResource("6_7e0v6")
+offState = ExtResource("5_7bpsr")
+SwitchScaleModifier = 0.0
+
+[sub_resource type="Resource" id="Resource_lx1vp"]
+script = ExtResource("5_8doev")
+onState = ExtResource("9_ce6ov")
+offState = ExtResource("8_o5dn5")
+SwitchScaleModifier = 0.0
 
 [node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard", "LightBoard", "FuseBoard")]
 script = ExtResource("1_41ims")
@@ -24,20 +42,27 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_4nc3w")
 SceneMan = NodePath("..")
+SwitchPrefab = ExtResource("4_s4bf6")
+SwitchRes = SubResource("Resource_y2v3v")
 
-[node name="SwitchPanel" type="Control" parent="."]
+[node name="SwitchPanel" type="Control" parent="." node_paths=PackedStringArray("SceneMan")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_4nc3w")
+SceneMan = NodePath("..")
+SwitchPrefab = ExtResource("4_s4bf6")
+SwitchRes = SubResource("Resource_lx1vp")
 
 [node name="SwitchGrid" type="Sprite2D" parent="."]
+show_behind_parent = true
 position = Vector2(578, 325)
 scale = Vector2(4, 4)
 texture = ExtResource("2_oaws6")
 
-[node name="SwitchGrid2" type="Sprite2D" parent="SwitchGrid"]
+[node name="Outline" type="Sprite2D" parent="SwitchGrid"]
 modulate = Color(0, 1, 0, 1)
 show_behind_parent = true
 scale = Vector2(1.15, 1.15)
