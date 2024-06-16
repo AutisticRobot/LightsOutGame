@@ -34,5 +34,11 @@ public partial class VisualMode : Node2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public void changePanel()
+	{
+		LightBoard.Visible = !LightBoard.Visible;
+		FuseBoard.Visible = !FuseBoard.Visible;
+	}
 	
 }

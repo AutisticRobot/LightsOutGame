@@ -12,7 +12,7 @@ public partial class Panel : Control
 	[Export] public PackedScene SwitchPrefab;
 	[Export] public DataSwitchRes SwitchRes;
 				public Vector2 SwitchScale;
-					 public float SwitchScaleModifier;
+					 public Vector2 SwitchScaleModifier;
 			 public List<Switch> allSwitches = new();
 			 public Grid State;
 
@@ -28,8 +28,8 @@ public partial class Panel : Control
 
 		SwitchScale = new
 		(
-			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize ,
-			(BoardLength.X * (1 + SwitchScaleModifier)) / XSize  
+			(BoardLength.X * (1 + SwitchScaleModifier.X)) / XSize ,
+			(BoardLength.X * (1 + SwitchScaleModifier.Y)) / XSize  
 		);
 
 
