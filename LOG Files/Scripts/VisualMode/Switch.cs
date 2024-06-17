@@ -3,6 +3,7 @@ using System;
 
 public partial class Switch : Sprite2D
 {
+	[Export] public Button button;
 	public int X;
 	public int Y;
     public Texture2D onState;
@@ -19,13 +20,31 @@ public partial class Switch : Sprite2D
 	{
 	}
 
+	public void onPress()
+	{
+		
+	}
+
+	public void setButtonSize(Vector2 size)
+	{
+		button.Size = size;
+        Vector2 tmp = new()
+        {
+            X = -size.X,
+            Y = -size.Y
+        };
+        button.Position = tmp;
+	}
+
 	public bool Toggle()
 	{
 		if(state)
 		{
+			setButtonSize(offState.GetSize());
 			Texture = offState;
 			state = !state;
 		}else{
+			setButtonSize(onState.GetSize());
 			Texture = onState;
 			state = !state;
 		}
@@ -36,8 +55,10 @@ public partial class Switch : Sprite2D
 		if(setState)
 		{
 			Texture = offState;
+			setButtonSize(offState.GetSize());
 		}else{
 			Texture = onState;
+			setButtonSize(onState.GetSize());
 		}
 			state = setState;
 		return state;
