@@ -9,6 +9,8 @@ public partial class Switch : Sprite2D
     public Texture2D onState;
     public Texture2D offState;
 
+	[Signal] public delegate Signal pressSignalEventHandler(int X, int Y);
+
 	public bool state = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,6 +24,7 @@ public partial class Switch : Sprite2D
 
 	public void onPress()
 	{
+		EmitSignal(SignalName.pressSignal, X, Y);
 		
 	}
 

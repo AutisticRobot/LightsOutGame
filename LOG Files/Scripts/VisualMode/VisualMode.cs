@@ -40,5 +40,10 @@ public partial class VisualMode : Node2D
 		LightBoard.Visible = !LightBoard.Visible;
 		FuseBoard.Visible = !FuseBoard.Visible;
 	}
+
+	public void press(int X, int Y)
+	{
+		GD.Print("Press at X:" + X + " Y:" + Y);
+	}
 	
 }

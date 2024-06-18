@@ -89,5 +89,7 @@ public partial class Panel : Control
 		AddChild(swt);
 		allSwitches.Add(swt);
 
+		swt.Connect("pressSignal", new Callable(SceneMan, VisualMode.MethodName.press));
+
 	}
 }
