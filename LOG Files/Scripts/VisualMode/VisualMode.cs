@@ -18,8 +18,24 @@ public partial class VisualMode : Node2D
 	{
 		BoardLength = SwitchBoard.Scale * SwitchBoard.Texture.GetSize();
 
-		solution.startGrid(XSize, YSize);
-		GD.Print("Solution is set = " + Grid.isReady(solution));
+		if(solution == null)
+		{
+			solution = new();
+			solution.startGrid(XSize, YSize);
+
+			solution.fillState(true);
+
+			GD.Print("Solution is set = " + Grid.isReady(solution));
+		}
+		if(GridState == null)
+		{
+			GridState = new();
+			GridState.startGrid(XSize, YSize);
+
+			GridState.fillState(false);
+
+			GD.Print("GridState is set = " + Grid.isReady(GridState));
+		}
 
 		LightBoard.UpdateState(GridState);
 		FuseBoard.UpdateState(solution);
@@ -44,6 +60,10 @@ public partial class VisualMode : Node2D
 	public void press(int X, int Y)
 	{
 		GD.Print("Press at X:" + X + " Y:" + Y);
+
+		LightBoard.State.pressSimple(X,Y);
+		LightBoard.UpdateCrossView();
+
 	}
 	
 }

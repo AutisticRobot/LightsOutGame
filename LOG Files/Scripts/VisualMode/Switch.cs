@@ -33,8 +33,8 @@ public partial class Switch : Sprite2D
 		button.Size = size;
         Vector2 tmp = new()
         {
-            X = -size.X,
-            Y = -size.Y
+            X = -(size.X / 2),
+            Y = -(size.Y / 2)
         };
         button.Position = tmp;
 	}
@@ -57,10 +57,10 @@ public partial class Switch : Sprite2D
 	{
 		if(setState)
 		{
-			Texture = offState;
+			Texture = onState;
 			setButtonSize(offState.GetSize());
 		}else{
-			Texture = onState;
+			Texture = offState;
 			setButtonSize(onState.GetSize());
 		}
 			state = setState;

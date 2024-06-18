@@ -9,6 +9,7 @@ public partial class Panel : Control
 			 public int YSize;
 			 public Vector2 BoardLength;
 			 public Vector2 BoardPos;
+	[Export] public int viewStyle = 0;
 	[Export] public PackedScene SwitchPrefab;
 	[Export] public DataSwitchRes SwitchRes;
 				public Vector2 SwitchScale;
@@ -46,7 +47,39 @@ public partial class Panel : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public void UpdateState(Grid grid)
 	{
-		State = grid;
+		if(grid != null)
+		{
+			State = grid;
+		}else{
+			State = new();
+			State.startGrid(XSize,YSize);
+		}
+
+		switch (viewStyle)
+		{
+			default:
+			case 0:
+			UpdateView();
+			break;
+			case 1:
+			UpdateCrossView();
+			break;
+		}
+	}
+
+	public void UpdateView()
+	{
+		foreach(Switch swt in allSwitches)
+		{
+			swt.Toggle(State.get(swt.X,swt.Y));
+		}
+	}
+	public void UpdateCrossView()
+	{
+		foreach(Switch swt in allSwitches)
+		{
+			swt.Toggle(State.getCross(swt.X,swt.Y));
+		}
 	}
 	
 	public void CreateSwitch(int X, int Y)
@@ -84,8 +117,7 @@ public partial class Panel : Control
 
 
 		//GD.Print(swt.Position);
-		swt.Toggle(test);
-		test = !test;
+		swt.Toggle(State.get(X,Y));
 		AddChild(swt);
 		allSwitches.Add(swt);
 

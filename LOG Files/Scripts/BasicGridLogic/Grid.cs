@@ -22,6 +22,22 @@ public partial class Grid : Resource
     }
 
     //==============\
+    //   Fillers    |
+    //=============/
+
+    public void fillState(bool state)
+    {
+		for(int Y=0;Y<YSize;Y++)
+		{
+			for(int X=0;X<XSize;X++)
+			{
+                grid[X,Y] = state;
+			}
+
+		}
+    }
+
+    //==============\
     //   Getters    |
     //=============/
     public bool hasGrid()
