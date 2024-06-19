@@ -58,10 +58,10 @@ public partial class Switch : Sprite2D
 		if(setState)
 		{
 			Texture = onState;
-			setButtonSize(offState.GetSize());
+			setButtonSize(onState.GetSize());
 		}else{
 			Texture = offState;
-			setButtonSize(onState.GetSize());
+			setButtonSize(offState.GetSize());
 		}
 			state = setState;
 		return state;

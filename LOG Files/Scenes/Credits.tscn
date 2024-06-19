@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyvkv8bgft38w"]
+
+[ext_resource type="Script" path="res://Scripts/changeSceneButton.cs" id="1_0nhrt"]
+
+[node name="Credits" type="Node2D"]
+
+[node name="ToMenu" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(2.84, 2.84)
+text = "<=Back"
+script = ExtResource("1_0nhrt")
+changeToScenePath = "res://Scenes/Main Menu.tscn"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 285.0
+offset_top = 94.0
+offset_right = 575.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 32
+text = "Lead Programmer:"
+
+[node name="Label3" type="Label" parent="Label"]
+offset_left = 304.0
+offset_right = 594.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "Tyler Michael Kormann"
+
+[node name="Label4" type="Label" parent="Label"]
+offset_left = 304.0
+offset_top = 45.0
+offset_right = 661.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 24
+text = "TylerKormann.com"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 285.0
+offset_top = 313.0
+offset_right = 575.0
+offset_bottom = 358.0
+theme_override_font_sizes/font_size = 32
+text = "Lead Artist:"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Label2"]
+offset_left = 295.0
+offset_right = 585.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "CatFish"
+
+[connection signal="pressed" from="ToMenu" to="ToMenu" method="onButtonPress"]

@@ -117,7 +117,6 @@ public partial class Panel : Control
 
 
 		//GD.Print(swt.Position);
-		swt.Toggle(State.get(X,Y));
 		AddChild(swt);
 		allSwitches.Add(swt);
 

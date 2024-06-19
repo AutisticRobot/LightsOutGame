@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2gg6n4j7x7c5"]
+[gd_scene load_steps=14 format=3 uid="uid://b2gg6n4j7x7c5"]
 
 [ext_resource type="Script" path="res://Scripts/VisualMode/VisualMode.cs" id="1_41ims"]
 [ext_resource type="Texture2D" uid="uid://bokbh0os0wy35" path="res://icon.svg" id="2_oaws6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://boymntw6nkct5" path="res://Assets/Design/Level/Fuse_off.png" id="8_o5dn5"]
 [ext_resource type="Texture2D" uid="uid://ctlk0nxlnovbt" path="res://Assets/Design/Level/Fuse_on.png" id="9_ce6ov"]
 [ext_resource type="Texture2D" uid="uid://cr7dq1ponfn1q" path="res://Assets/Design/Menu/Box_small.png" id="11_bk475"]
+[ext_resource type="Script" path="res://Scripts/changeSceneButton.cs" id="11_f6rra"]
 
 [sub_resource type="Resource" id="Resource_y2v3v"]
 script = ExtResource("5_8doev")
@@ -72,4 +73,15 @@ offset_bottom = 187.0
 scale = Vector2(0.319998, 0.68)
 icon = ExtResource("11_bk475")
 
+[node name="ToMenu" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(2.84, 2.84)
+text = "<=Back"
+script = ExtResource("11_f6rra")
+changeToScenePath = "res://Scenes/Main Menu.tscn"
+
 [connection signal="pressed" from="Button" to="." method="changePanel"]
+[connection signal="pressed" from="ToMenu" to="ToMenu" method="onButtonPress"]

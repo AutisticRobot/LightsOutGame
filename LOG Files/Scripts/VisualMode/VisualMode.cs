@@ -23,7 +23,7 @@ public partial class VisualMode : Node2D
 			solution = new();
 			solution.startGrid(XSize, YSize);
 
-			solution.fillState(true);
+			solution.fillState(false);
 
 			GD.Print("Solution is set = " + Grid.isReady(solution));
 		}
@@ -38,12 +38,14 @@ public partial class VisualMode : Node2D
 		}
 
 		LightBoard.UpdateState(GridState);
-		FuseBoard.UpdateState(solution);
+		FuseBoard.UpdateState(GridState);
 
 
 		LightBoard.Start();
 		FuseBoard.Start();
-	
+
+		LightBoard.UpdateCrossView();
+		FuseBoard.UpdateView();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +65,9 @@ public partial class VisualMode : Node2D
 
 		LightBoard.State.pressSimple(X,Y);
 		LightBoard.UpdateCrossView();
+
+		//FuseBoard.State.pressSimple(X,Y);
+		FuseBoard.UpdateView();
 
 	}
 	

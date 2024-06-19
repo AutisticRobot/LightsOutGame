@@ -3,7 +3,7 @@ using System;
 
 public partial class changeSceneButton : Button
 {
-	[Export] public PackedScene changeToScene;
+	[Export] public string changeToScenePath;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -16,6 +16,6 @@ public partial class changeSceneButton : Button
 
 	public void onButtonPress()
 	{
-		GetTree().ChangeSceneToPacked(changeToScene);
+		GetTree().ChangeSceneToFile(changeToScenePath);
 	}
 }

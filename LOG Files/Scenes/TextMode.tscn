@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7n5q1fp2bnvv"]
+[gd_scene load_steps=4 format=3 uid="uid://c7n5q1fp2bnvv"]
 
 [ext_resource type="Script" path="res://Scripts/TextOnly/light_box_scene.cs" id="1_hiry7"]
 [ext_resource type="Theme" uid="uid://b54xpct54kdau" path="res://Assets/Placeholder/BasicTheme.tres" id="1_y4gux"]
+[ext_resource type="Script" path="res://Scripts/changeSceneButton.cs" id="3_kdify"]
 
 [node name="Light Box Scene" type="Node2D" node_paths=PackedStringArray("XInput", "YInput", "LightGrid", "SwitchGrid")]
 script = ExtResource("1_hiry7")
@@ -59,4 +60,15 @@ offset_bottom = 497.0
 theme = ExtResource("1_y4gux")
 placeholder_text = "Y Cord"
 
+[node name="ToMenu" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(2.84, 2.84)
+text = "<=Back"
+script = ExtResource("3_kdify")
+changeToScenePath = "res://Scenes/Main Menu.tscn"
+
 [connection signal="button_down" from="Button" to="." method="onGetCord"]
+[connection signal="pressed" from="ToMenu" to="ToMenu" method="onButtonPress"]
