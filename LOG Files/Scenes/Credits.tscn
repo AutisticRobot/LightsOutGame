@@ -12,7 +12,6 @@ offset_bottom = 60.0
 scale = Vector2(2.84, 2.84)
 text = "<=Back"
 script = ExtResource("1_0nhrt")
-changeToScenePath = "res://Scenes/Main Menu.tscn"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 285.0
@@ -23,6 +22,7 @@ theme_override_font_sizes/font_size = 32
 text = "Lead Programmer:"
 
 [node name="Label3" type="Label" parent="Label"]
+layout_mode = 0
 offset_left = 304.0
 offset_right = 594.0
 offset_bottom = 45.0
@@ -30,6 +30,7 @@ theme_override_font_sizes/font_size = 32
 text = "Tyler Michael Kormann"
 
 [node name="Label4" type="Label" parent="Label"]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 45.0
 offset_right = 661.0
@@ -47,10 +48,11 @@ text = "Lead Artist:"
 horizontal_alignment = 2
 
 [node name="Label3" type="Label" parent="Label2"]
+layout_mode = 0
 offset_left = 295.0
 offset_right = 585.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
-text = "CatFish"
+text = "Alena @GlowSquidStudios"
 
 [connection signal="pressed" from="ToMenu" to="ToMenu" method="onButtonPress"]
