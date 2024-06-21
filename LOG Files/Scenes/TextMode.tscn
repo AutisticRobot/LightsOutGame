@@ -66,7 +66,7 @@ offset_top = 52.0
 offset_right = 64.0
 offset_bottom = 60.0
 scale = Vector2(2.84, 2.84)
-text = "<=Back"
+text = "<= Back"
 script = ExtResource("3_kdify")
 changeToScenePath = "res://Scenes/Main Menu.tscn"
 
