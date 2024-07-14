@@ -54,10 +54,16 @@ public partial class Grid : Resource
 
     public bool get(int X, int Y)
     {
+        try
+        {
         if(isInGrid(X,Y))
         {
             return grid[X,Y];
         }else{
+            return false;
+        }
+        }catch{
+            GD.Print("!!!!!!!!!!!!!OUT OF BOUNDS ERROR: " + X + ", " + Y + ", size: " + XSize + ", " + YSize);
             return false;
         }
     }
@@ -107,7 +113,7 @@ public partial class Grid : Resource
     //=============/
     public bool isInGrid(int X, int Y)
     {
-        if(0 > X || X >= XSize || 0 > Y || Y >= XSize || isInOtherParameter(X,Y))// N >= NSize because Size vars are 1 grater that the last index in grid 
+        if(0 > X || X >= XSize || 0 > Y || Y >= YSize || isInOtherParameter(X,Y))// N >= NSize because Size vars are 1 grater that the last index in grid 
         {
             return false;
         }else{

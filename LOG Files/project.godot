@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Main Menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalData="*res://Scripts/globalData.cs"
+
 [display]
 
 window/stretch/mode="canvas_items"

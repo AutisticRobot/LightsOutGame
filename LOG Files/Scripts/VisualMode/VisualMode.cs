@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public partial class VisualMode : Node2D
 {
-	[Export] public int XSize;
-	[Export] public int YSize;
+			 public globalData data;
+
+			 public int XSize;
+			 public int YSize;
 	[Export] public Sprite2D SwitchBoard;
 			 public Vector2 BoardLength;
 	[Export] public MaskedGrid GridState;
@@ -16,6 +18,10 @@ public partial class VisualMode : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		data = GetNode<globalData>("/root/GlobalData");
+		XSize = data.XSize;
+		YSize = data.YSize;
+
 		BoardLength = SwitchBoard.Scale * SwitchBoard.Texture.GetSize();
 
 		if(solution == null)

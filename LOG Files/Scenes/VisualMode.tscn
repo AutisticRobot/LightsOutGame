@@ -26,8 +26,6 @@ SwitchScaleModifier = Vector2(1.5, -0.6)
 
 [node name="VisualMode" type="Node2D" node_paths=PackedStringArray("SwitchBoard", "LightBoard", "FuseBoard")]
 script = ExtResource("1_41ims")
-XSize = 5
-YSize = 5
 SwitchBoard = NodePath("SwitchGrid")
 LightBoard = NodePath("LightPanel")
 FuseBoard = NodePath("SwitchPanel")

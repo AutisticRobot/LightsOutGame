@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://nuyi2xaxo1q6"]
+
+[ext_resource type="Script" path="res://Scripts/changeSceneButton.cs" id="1_hbyhg"]
+[ext_resource type="Script" path="res://Scripts/Options.cs" id="1_mmfml"]
+[ext_resource type="Theme" uid="uid://b54xpct54kdau" path="res://Assets/Placeholder/BasicTheme.tres" id="2_ff2q2"]
+
+[node name="Options" type="Node2D" node_paths=PackedStringArray("XInput", "YInput")]
+script = ExtResource("1_mmfml")
+XInput = NodePath("Control/XInput")
+YInput = NodePath("Control/YInput")
+
+[node name="ToMenu" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(2.84, 2.84)
+text = "<= Back"
+script = ExtResource("1_hbyhg")
+changeToScenePath = "res://Scenes/Main Menu.tscn"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+offset_left = 410.0
+offset_top = 277.0
+offset_right = 749.0
+offset_bottom = 392.0
+scale = Vector2(0.68, 0.76)
+theme = ExtResource("2_ff2q2")
+text = "set board size"
+
+[node name="XInput" type="LineEdit" parent="Control"]
+offset_left = 257.0
+offset_top = 402.0
+offset_right = 501.0
+offset_bottom = 498.0
+theme = ExtResource("2_ff2q2")
+placeholder_text = "X Size"
+
+[node name="YInput" type="LineEdit" parent="Control"]
+offset_left = 546.0
+offset_top = 401.0
+offset_right = 790.0
+offset_bottom = 497.0
+theme = ExtResource("2_ff2q2")
+placeholder_text = "Y Size"
+
+[connection signal="pressed" from="ToMenu" to="ToMenu" method="onButtonPress"]
+[connection signal="button_down" from="Control/Button" to="." method="onGetCord"]
